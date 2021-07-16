@@ -9,7 +9,9 @@
   --color-grey-dark-1: #333;
   --color-grey-dark-2: #777;
   --color-grey-dark-3: #999;
-  --shadow-dark: 0 2rem 6rem rgb(0, 0, 0, 0.3); }
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0,0,0,0.06);
+  --line: 1px solid var(--color-grey-light-2); }
 
 * {
   padding: 0;
@@ -45,25 +47,46 @@ body {
   height: 7rem;
   font-size: 1.4rem;
   background-color: #fff;
-  border-bottom: var(--color-grey-light-2);
+  border-bottom: 1px solid var(--color-grey-light-2);
   display: flex;
   justify-content: space-between;
   align-items: center; }
 
 .content {
   display: flex;
-  margin: 0 20px; }
+  margin: 0 20px;
+  height: 50rem; }
 
-.side-bar {
-  background-color: green;
-  flex: 0 0 18%; }
+.sidebar {
+  background-color: var(--color-grey-dark-1);
+  flex: 0 0 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
 
 .hotel-view {
-  background-color: red;
   flex: 1 1; }
 
+.detail {
+  display: flex;
+  padding: 4.5rem;
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--line); }
+
+.description {
+  background-color: #fff;
+  flex: 0 0 60%;
+  margin-right: 4.5rem;
+  box-shadow: var(--shadow-light);
+  padding: 3rem; }
+
+.user-reviews {
+  background-color: yellowgreen;
+  flex: 1; }
+
 .logo {
-  height: 3.25rem; }
+  height: 3.25rem;
+  margin-left: 2rem; }
 
 .search {
   flex: 0 0 40%;
@@ -136,3 +159,121 @@ body {
     width: 3.75rem;
     height: 3.75rem;
     border-radius: 100%; }
+
+.side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem; }
+  .side-nav__item {
+    background-color: var(--color-grey-dark-1);
+    margin-bottom: 0.5rem;
+    position: relative; }
+  .side-nav__item::before {
+    position: absolute;
+    content: "";
+    background-color: var(--color-primary);
+    width: 3px;
+    height: 100%;
+    transform: scaleY(0);
+    transition: transform 0.2s, width 0.5s 0.2s; }
+  .side-nav__item:hover::before {
+    transform: scaleY(1);
+    width: 100%; }
+  .side-nav__item:active::before {
+    background-color: var(--color-primary-dark); }
+  .side-nav__active {
+    background-color: var(--color-primary); }
+  .side-nav__link {
+    display: flex;
+    align-items: center; }
+  .side-nav__link:visited, .side-nav__link:link {
+    display: flex;
+    color: var(--color-grey-light-1);
+    text-transform: uppercase;
+    padding: 1.5rem 3rem;
+    text-decoration: none;
+    position: relative;
+    z-index: 100; }
+  .side-nav__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: var(--color-grey-light-1);
+    margin-right: 2rem; }
+
+.legal {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2.5rem;
+  color: #fff; }
+
+.gallery {
+  display: flex;
+  flex-direction: row; }
+  .gallery__photo {
+    width: 100%;
+    display: block; }
+
+.overview {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey-light-2);
+  background-color: #fff; }
+  .overview__heading {
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 1.5rem;
+    font-weight: 300;
+    padding: 1.5rem; }
+  .overview__stars {
+    margin-right: auto;
+    display: flex; }
+  .overview__icon-star, .overview__icon-location {
+    height: 2rem;
+    width: 2rem;
+    fill: var(--color-primary); }
+  .overview__location {
+    display: flex; }
+  .overview__rating {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-primary);
+    color: #fff;
+    margin-left: 3rem;
+    align-items: center;
+    align-self: stretch;
+    padding: 0 2.25rem;
+    margin-left: 3rem;
+    justify-content: center; }
+    .overview__rating__average {
+      font-size: 2.25rem;
+      font-weight: 300; }
+    .overview__rating__count {
+      font-size: 1rem;
+      text-transform: uppercase; }
+
+.btn-inline {
+  border: none;
+  color: var(--color-primary);
+  border-bottom: 1px solid currentColor;
+  background-color: transparent;
+  display: inline-block;
+  cursor: pointer;
+  transition: color 0.2s; }
+  .btn-inline:hover {
+    color: var(--color-grey-dark-1); }
+  .btn-inline:focus {
+    outline: none;
+    box-shadow: none;
+    animation: pulstate 1s infinite; }
+
+@keyframes pulstate {
+  0% {
+    transform: scale(1);
+    box-shadow: none; }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25); }
+  100% {
+    transform: scale(1);
+    box-shadow: none; } }
